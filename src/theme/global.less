@@ -1,0 +1,315 @@
+*,
+*:after,
+*:before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+}
+/* start 滚动条样式 */
+::-webkit-scrollbar-track-piece {
+  background-color: rgba(0, 0, 0, 0);
+  border-left: 1px solid rgba(0, 0, 0, 0);
+}
+::-webkit-scrollbar {
+  width: 17px;
+  height: 17px;
+  border-radius: 20px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.05);
+  background-clip: padding-box;
+  border-radius: 20px;
+  min-height: 1.9rem;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+}
+// 初始化字体样式
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  font-family: "PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: #0000;
+  color: @color-text-primary;
+  overflow-x: hidden;
+  min-width: 1280px;
+  height: 100%;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+textarea {
+  font-weight: inherit;
+  font-size: inherit;
+  font-family: inherit;
+}
+a {
+  color: @color-primary;
+  text-decoration: none;
+  &:hover {
+    color: lighten(@color-primary,10%);
+  }
+}
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
+}
+.text-center {
+  text-align: center;
+}
+.text-subsidiary {
+  color: @color-subsidiary !important;
+}
+.text-primary {
+  color: @color-primary !important;
+}
+.text-success {
+  color: @color-success !important;
+}
+.text-danger {
+  color: @color-danger !important;
+}
+.text-warning {
+  color: @color-warning !important;
+}
+.text-info {
+  color: @color-info !important;
+}
+.btn-block {
+  display: block;
+  width: 100%;
+}
+//样式覆盖
+// 独立段落标题
+.single-title {
+  font-size: 20px;
+  padding: 0 10px;
+  margin: 0 0 20px;
+  border-radius: 0 4px 4px 0;
+  border-left: 5px solid @color-primary;
+  font-weight: 800;
+  line-height: 1;
+  color: @color-info;
+}
+//解决在表单元素中的文本域“字数限制”行高受form表单默认行高影响
+.el-form-item__content .el-input__count {
+  line-height: 1;
+}
+// 只读表格的行高限制一下
+.read-only-form {
+  margin-bottom: 24px;
+  .el-form-item {
+    margin-bottom: 0;
+  }
+}
+//顶级返回el-page-header
+.el-page-header {
+  background-color: fade(@color-primary,5%);
+  border-radius: 4px;
+  padding: 16px;
+  margin-bottom: 24px;
+  /deep/.el-page-header__left {
+    display: flex;
+    align-items: center;
+  }
+  /deep/.el-page-header__content {
+    flex: 1;
+  }
+  .page-header-content {
+    display: flex;
+    align-items: center;
+    .title-text {
+      font-weight: 600;
+    }
+    .sns-share {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      .el-button {
+        padding: 4px;
+      }
+    }
+  }
+}
+//cells列表样式
+.cells {
+  background-color: #FFF;
+  line-height: 1.41176471;
+  font-size: 16px;
+  overflow: hidden;
+  position: relative;
+  &::after,
+  &::before {
+    content: " ";
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1px;
+    transform: scaleY(0.5);
+    z-index: 2;
+  }
+  &:before {
+    top: 0;
+    border-top: 1px solid @color-border;
+    transform-origin: 0 0;
+  }
+  &:after {
+    bottom: 0;
+    border-bottom: 1px solid @color-border;
+    transform-origin: 0 100%;
+  }
+  .cell {
+    padding: 16px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    color: inherit;
+    &:before {
+      content: " ";
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      height: 1px;
+      border-top: 1px solid @color-border-light;
+      transform-origin: 0 0;
+      transform: scaleY(0.5);
+      left: 16px;
+      z-index: 2;
+    }
+    &:first-child:before {
+      display: none;
+    }
+    .cell__bd {
+      flex: 1;
+    }
+    .cell__ft {
+      text-align: right;
+      color: @color-subsidiary;
+    }
+    &.cell_access {
+      cursor: pointer;
+      &:hover {
+        background-color: @color-body-bg;
+      }
+      .cell__ft {
+        padding-right: 22px;
+        position: relative;
+        &:after {
+          content: " ";
+          width: 12px;
+          height: 24px;
+          -webkit-mask-position: 0 0;
+          mask-position: 0 0;
+          -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+          -webkit-mask-size: 100%;
+          mask-size: 100%;
+          background-color: currentColor;
+          color: #0000004d;
+          mask-image: url("data:image/svg+xml,%3Csvg%20width%3D%2212%22%20height%3D%2224%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M2.454%206.58l1.06-1.06%205.78%205.779a.996.996%200%20010%201.413l-5.78%205.779-1.06-1.061%205.425-5.425-5.425-5.424z%22%20fill%3D%22%23B2B2B2%22%20fill-rule%3D%22evenodd%22%2F%3E%3C%2Fsvg%3E");
+          position: absolute;
+          top: 50%;
+          right: 0;
+          margin-top: -12px;
+        }
+      }
+    }
+  }
+}
+.el-card__body > .cells::before {
+  display: none;
+}
+.el-card__body > .cells:last-child::after {
+  display: none;
+}
+//单独的title-text
+.card-title {
+  font-size: 16px;
+  display: inline-block;
+  padding: 0 10px;
+  margin: 0 0 0 -20px;
+  border-radius: 0 4px 4px 0;
+  border-left: 5px solid @color-primary;
+  font-weight: 800;
+}
+.title-text {
+  font-size: 16px;
+  font-weight: 800;
+  margin-bottom: 12px;
+  line-height: 1;
+  border-left: 4px solid @color-primary;
+  padding-left: 6px;
+}
+//预览大图的时候右上角的关闭按钮颜色
+.el-image-viewer__close {
+  color: #FFF;
+}
+//抽屉的内容包裹区
+.el-drawer {
+  overflow: hidden;
+  .el-drawer__body {
+    overflow: hidden;
+  }
+}
+//版本列表
+.version-list {
+  .version-title {
+    > strong:first-child {
+      margin-right: 12px;
+    }
+  }
+  .version-info {
+    padding-top: 16px;
+  }
+}
+//全局搜索栏
+.search-form {
+  padding-top: 15px;
+  background-color: #FFF;
+}
+.table-control {
+  padding: 16px;
+  .el-button-group+.el-button-group {
+    margin-left: 10px;
+  }
+}
+.el-dialog__body .table-control {
+  padding: 0;
+  margin-bottom: 16px;
+}
+.table-data {
+  padding: 0 16px;
+}
+.table-pagination {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  .el-pagination {
+    margin-left: auto;
+  }
+}
+.tb-edit .el-input {
+  display: none;
+}
+.tb-edit .current-row .el-input {
+  display: block;
+}
+.tb-edit .current-row .el-input+span {
+  display: none;
+}
+//消息提示
+.el-message {
+  min-width: 150px;
+}
